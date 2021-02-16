@@ -4,16 +4,7 @@ services:
     build:
       dockerfile: ./Dockerfile
       context: ./
-    environment:
-      SERVER_ADDR: "0.0.0.0"
-      SERVER_PORT: "443"
-      PASSWORD: "password"
-      METHOD: "aes-256-cfb"
-      PROTOCOL: "origin"
-      PROTOCOLPARAM: "32"
-      OBFS: "tls1.2_ticket_auth_compatible"
-      TIMEOUT: "300"
-      DNS_ADDR: "1.1.1.1"
-      DNS_ADDR_2: "1.0.0.1"
+    env_file:
+      - ./.env
     ports:
-    - "443:443"
+    - "$SERVER_PORT:$SERVER_PORT"
